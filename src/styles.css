@@ -3,3 +3,8 @@ body {
   overflow: hidden;
   margin: 0;
 }
+
+#blob_canvas{
+  width:600px;
+  height:600px;
+}

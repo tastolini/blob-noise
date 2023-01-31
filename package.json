@@ -8,6 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "deasync": "^0.1.28",
     "lodash": "4.17.21",
     "parcel-bundler": "1.12.5",
     "three": "0.149.0"

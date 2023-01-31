@@ -23,24 +23,32 @@ console.clear();
 
 let scene = new Scene();
 // scene.background = new Color(1, 0, 1).multiplyScalar(0.125);
+const container = document.getElementById( 'blob_canvas' );
+
 let camera = new PerspectiveCamera(
   60,
-  window.innerWidth / window.innerHeight,
+  container.clientWidth / container.clientHeight,
   1,
   1000
 );
 camera.position.set(0, 0, 10);
+
+
+
 let renderer = new WebGLRenderer({
   antialias: true,
   alpha: true,
   premultipliedAlpha: false
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.prepend(renderer.domElement);
+renderer.setSize(container.clientWidth, container.clientHeight);
+// document.body.prepend(renderer.domElement);
+container.appendChild( renderer.domElement );
+
+
 window.addEventListener("resize", (event) => {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
 // let controls = new OrbitControls(camera, renderer.domElement);

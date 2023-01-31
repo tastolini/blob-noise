@@ -56310,19 +56310,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 console.clear();
 var scene = new _three.Scene();
 // scene.background = new Color(1, 0, 1).multiplyScalar(0.125);
-var camera = new _three.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+var container = document.getElementById('blob_canvas');
+var camera = new _three.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 1, 1000);
 camera.position.set(0, 0, 10);
 var renderer = new _three.WebGLRenderer({
   antialias: true,
   alpha: true,
   premultipliedAlpha: false
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.prepend(renderer.domElement);
+renderer.setSize(container.clientWidth, container.clientHeight);
+// document.body.prepend(renderer.domElement);
+container.appendChild(renderer.domElement);
 window.addEventListener("resize", function (event) {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
 // let controls = new OrbitControls(camera, renderer.domElement);
@@ -56415,7 +56417,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46545" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50597" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
